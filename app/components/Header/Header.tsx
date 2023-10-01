@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 
 import logo from "@/app/images/logo.png";
@@ -5,19 +6,18 @@ import cart from "@/app/images/cartIcon.png";
 
 import { CiLocationOn } from "react-icons/ci";
 import { BiSearchAlt2 } from "react-icons/bi";
-import Link from "next/link";
 
 export default function Header() {
   return (
     <nav className="bg-black p-4 flex items-center gap-4 text-white">
       {/* start logo */}
-      <Link href={"/"} className="w-28 border border-transparent p-2 rounded hover:border-white transition duration-300 cursor-pointer">
+      <Link href={"/"} className="w-28 header-item p-2">
         <Image src={logo} alt={"logo"} />
       </Link>
       {/* end logo */}
 
       {/* start deliver */}
-      <div className="hidden lg:block border border-transparent p-2 rounded hover:border-white transition duration-300 cursor-pointer">
+      <div className="hidden lg:block header-item p-2">
         <div className="flex items-center gap-2">
           <CiLocationOn className="text-2xl" />
           <div className="text-xs">
@@ -42,21 +42,21 @@ export default function Header() {
       {/* end search */}
 
       {/* strat signin */}
-      <div className="text-xs border border-transparent p-2 rounded hover:border-white transition duration-300 cursor-pointer">
+      <div className="text-xs header-item p-2">
         <div className="text-lightText">Hello, sign in</div>
         <div className="font-bold flex items-center gap-1">Account & Lists</div>
       </div>
       {/* end signin */}
 
       {/* strat favourite */}
-      <div className="hidden lg:block text-xs border border-transparent p-2 rounded hover:border-white transition duration-300 cursor-pointer">
+      <div className="hidden lg:block text-xs header-item p-2">
         <div className="text-lightText">Marked</div>
         <div className="font-bold flex items-center gap-1">& Favourite</div>
       </div>
       {/* end favourite */}
 
       {/* start cart */}
-      <Link href={"/cart"} className="flex text-xs border border-transparent p-2 rounded hover:border-white transition duration-300 cursor-pointer">
+      <Link href={"/cart"} className="flex text-xs header-item p-2">
         <div className="relative">
           <Image src={cart} alt={"cart"} className="w-10" />
           <span className="absolute top-[-5px] right-[12px] font-bold text-amazon_yellow">

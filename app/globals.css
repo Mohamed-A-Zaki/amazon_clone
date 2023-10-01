@@ -3,3 +3,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .header-item {
+    @apply border border-transparent rounded hover:border-white transition duration-300 cursor-pointer;
+  }
+}
