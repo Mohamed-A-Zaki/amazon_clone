@@ -7,7 +7,17 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        bodyFont: ["Poppins", "sans-serif"],
+      },
+      colors: {
+        amazon_blue: "#131921",
+        amazon_light: "#232F3E",
+        amazon_yellow: "#febd69",
+        lightText: "#ccc",
+      },
+    },
   },
   plugins: [require("tw-elements-react/dist/plugin.cjs")],
 };
