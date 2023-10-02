@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="font-bodyFont">
+      <body className="font-bodyFont bg-gray-300">
         <Header />
         <BottomHeader />
         {children}
