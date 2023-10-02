@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 import "tw-elements-react/dist/css/tw-elements-react.min.css";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 import Header from "./components/Header";
 import BottomHeader from "./components/BottomHeader";

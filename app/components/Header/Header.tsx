@@ -32,7 +32,7 @@ export default function Header() {
       <div className="hidden lg:block flex-grow relative">
         <input
           type="search"
-          className="p-2 w-full rounded-md outline-none border-4 border-transparent focus:border-amazon_yellow"
+          className="p-2 w-full rounded-md outline-none border-4 border-transparent focus:border-amazon_yellow placeholder:text-sm"
           placeholder="Search next_amazon products"
         />
         <span className="absolute top-0 right-0 h-full w-12 cursor-pointer rounded-r-md bg-amazon_yellow flex items-center justify-center">
