@@ -9,7 +9,6 @@ export default function Product({
   image,
   category,
 }: ProductType) {
-  console.log(image);
   return (
     <>
       <div className="px-3 py-5 bg-white rounded-lg">
