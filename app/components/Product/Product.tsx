@@ -2,14 +2,11 @@ import { ProductType } from "@/app/types";
 import Image from "next/image";
 
 export default function Product({
-  _id,
   title,
   description,
   oldPrice,
   price,
-  brand,
   image,
-  isNew,
   category,
 }: ProductType) {
   console.log(image);
