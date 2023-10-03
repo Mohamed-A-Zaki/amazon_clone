@@ -1,5 +1,7 @@
-import { ProductType } from "@/app/types";
+import Link from "next/link";
 import Image from "next/image";
+import { ProductType } from "@/app/types";
+import { AiOutlineShoppingCart, AiFillHeart } from "react-icons/ai";
 
 export default function Product({
   title,
@@ -11,8 +13,8 @@ export default function Product({
 }: ProductType) {
   return (
     <>
-      <div className="px-3 py-5 bg-white rounded-lg">
-        <div className="relative h-[250px] flex items-center justify-center">
+      <Link href={"/"} className="px-3 py-5 bg-white rounded-lg group">
+        <div className="relative h-[250px] flex items-center justify-center overflow-hidden">
           <Image
             src={image}
             alt={"img"}
@@ -22,6 +24,16 @@ export default function Product({
           />
           <div className="absolute top-0 right-0 animate-bounce text-xs font-medium">
             !save {Math.round(oldPrice - price)}
+          </div>
+          <div className="absolute top-1/2 right-0 -translate-y-0.5 translate-x-60 group-hover:translate-x-0 transition duration-300">
+            <AiOutlineShoppingCart
+              size={40}
+              className="border p-2 border-black rounded-t cursor-pointer hover:bg-amazon_yellow transition duration-300"
+            />
+            <AiFillHeart
+              size={40}
+              className="border p-2 border-black rounded-b border-t-0 cursor-pointer hover:bg-amazon_yellow transition duration-300"
+            />
           </div>
         </div>
         <div className="border-t">
@@ -38,7 +50,7 @@ export default function Product({
             add to cart
           </button>
         </div>
-      </div>
+      </Link>
     </>
   );
 }
