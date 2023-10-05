@@ -1,19 +1,28 @@
-import Link from "next/link";
+"use client";
+
 import Image from "next/image";
 import { ProductType } from "@/app/types";
 import { AiOutlineShoppingCart, AiFillHeart } from "react-icons/ai";
+import { useAppDispatch } from "@/app/store/hooks";
+import { addToCart } from "@/app/store/cartSlice";
+import { addToFavotite } from "@/app/store/favoriteSlice";
 
-export default function Product({
-  title,
-  description,
-  oldPrice,
-  price,
-  image,
-  category,
-}: ProductType) {
+export default function Product(product: ProductType) {
+  const { title, description, oldPrice, price, image, category } = product;
+
+  const dispatch = useAppDispatch();
+
+  const handle_Add_to_cart = () => {
+    dispatch(addToCart(product));
+  };
+
+  const handle_Add_to_favorite = () => {
+    dispatch(addToFavotite(product));
+  };
+
   return (
     <>
-      <Link href={"/"} className="px-3 py-5 bg-white rounded-lg group">
+      <div className="px-3 py-5 bg-white rounded-lg group">
         <div className="relative h-[250px] flex items-center justify-center overflow-hidden">
           <Image
             src={image}
@@ -28,10 +37,12 @@ export default function Product({
           <div className="absolute top-1/2 right-0 -translate-y-0.5 translate-x-60 group-hover:translate-x-0 transition duration-300">
             <AiOutlineShoppingCart
               size={40}
+              onClick={handle_Add_to_cart}
               className="border p-2 border-black rounded-t cursor-pointer hover:bg-amazon_yellow transition duration-300"
             />
             <AiFillHeart
               size={40}
+              onClick={handle_Add_to_favorite}
               className="border p-2 border-black rounded-b border-t-0 cursor-pointer hover:bg-amazon_yellow transition duration-300"
             />
           </div>
@@ -46,11 +57,14 @@ export default function Product({
           <div className="text-xs text-gray-600 my-2">
             {description.slice(0, 150)}
           </div>
-          <button className="p-2 w-full bg-black mt-2 text-white rounded-md transition duration-300 border-2 border-transparent font-semibold hover:bg-amazon_yellow hover:border-black hover:text-black">
+          <button
+            onClick={handle_Add_to_cart}
+            className="p-2 w-full bg-black mt-2 text-white rounded-md transition duration-300 border-2 border-transparent font-semibold hover:bg-amazon_yellow hover:border-black hover:text-black"
+          >
             add to cart
           </button>
         </div>
-      </Link>
+      </div>
     </>
   );
 }

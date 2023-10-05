@@ -7,6 +7,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Header from "./components/Header";
 import BottomHeader from "./components/BottomHeader";
 import Footer from "./components/Footer";
+import ReduxProvider from "./components/ReduxProvider";
 
 export const metadata: Metadata = {
   title: "Amazon Clone",
@@ -19,13 +20,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="font-bodyFont bg-gray-300">
-        <Header />
-        <BottomHeader />
-        {children}
-        <Footer />
-      </body>
-    </html>
+    <ReduxProvider>
+      <html lang="en">
+        <body className="font-bodyFont bg-gray-300">
+          <Header />
+          <BottomHeader />
+          {children}
+          <Footer />
+        </body>
+      </html>
+    </ReduxProvider>
   );
 }
