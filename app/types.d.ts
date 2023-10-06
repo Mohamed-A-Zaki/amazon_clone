@@ -9,3 +9,7 @@ export type ProductType = {
   isNew: boolean;
   category: string;
 };
+
+export type CartProductType = ProductType & {
+  count: number;
+};
