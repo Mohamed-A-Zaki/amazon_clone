@@ -1,24 +1,12 @@
 "use client";
-
 import Image from "next/image";
 import { ProductType } from "@/app/types";
+import useProduct from "@/app/hooks/useProduct";
 import { AiOutlineShoppingCart, AiFillHeart } from "react-icons/ai";
-import { useAppDispatch } from "@/app/store/hooks";
-import { addToCart } from "@/app/store/cartSlice";
-import { addToFavotite } from "@/app/store/favoriteSlice";
 
 export default function Product(product: ProductType) {
   const { title, description, oldPrice, price, image, category } = product;
-
-  const dispatch = useAppDispatch();
-
-  const handle_Add_to_cart = () => {
-    dispatch(addToCart(product));
-  };
-
-  const handle_Add_to_favorite = () => {
-    dispatch(addToFavotite(product));
-  };
+  const { handle_Add_to_cart, handle_Add_to_favorite } = useProduct(product);
 
   return (
     <>
@@ -32,7 +20,7 @@ export default function Product(product: ProductType) {
             className="m-auto object-cover h-[250px]"
           />
           <div className="absolute top-0 right-0 animate-bounce text-xs font-medium">
-            !save {Math.round(oldPrice - price)}
+            !save {(oldPrice - price).toFixed(2)}
           </div>
           <div className="absolute top-1/2 right-0 -translate-y-0.5 translate-x-60 group-hover:translate-x-0 transition duration-300">
             <AiOutlineShoppingCart

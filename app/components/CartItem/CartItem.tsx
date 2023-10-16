@@ -3,18 +3,14 @@
 import Image from "next/image";
 import { BsTrash } from "react-icons/bs";
 import { CartProductType } from "@/app/types";
-import { useDispatch } from "react-redux";
-import { removeFromCart } from "@/app/store/cartSlice";
+import useCartItem from "@/app/hooks/useCartItem";
 
 export default function CartItem(product: CartProductType) {
-  const dispatch = useDispatch();
-
-  const handle_remove_from_cart = () => {
-    const confirm = window.confirm("Are You Sure To Remove The Item?");
-    if (confirm) {
-      dispatch(removeFromCart(product._id));
-    }
-  };
+  const {
+    handle_decreae_count,
+    handle_increae_count,
+    handle_remove_from_cart,
+  } = useCartItem(product._id);
 
   return (
     <div className="relative p-2 bg-gray-100 rounded-lg my-3 flex items-center justify-between">
@@ -34,18 +30,24 @@ export default function CartItem(product: CartProductType) {
           Unit price <span className="font-bold">${product.price}</span>
         </div>
         <div className="flex gap-3 border rounded-xl shadow-md items-center w-28 justify-evenly my-3">
-          <span className="w-5 h-5 rounded-full flex justify-center items-center transition duration-300 cursor-pointer hover:bg-gray-500 ">
+          <span
+            onClick={handle_increae_count}
+            className="w-5 h-5 rounded-full flex justify-center items-center transition duration-300 cursor-pointer hover:bg-gray-500 "
+          >
             +
           </span>
           <span>{product.count}</span>
-          <span className="w-5 h-5 rounded-full flex justify-center items-center transition duration-300 cursor-pointer hover:bg-gray-500 ">
+          <span
+            onClick={handle_decreae_count}
+            className="w-5 h-5 rounded-full flex justify-center items-center transition duration-300 cursor-pointer hover:bg-gray-500 "
+          >
             -
           </span>
         </div>
       </div>
 
       <div className="font-medium text-xl">
-        ${product.count * product.price}
+        ${(product.count * product.price).toFixed(2)}
       </div>
 
       <div
