@@ -7,6 +7,10 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    container: {
+      center: true,
+      padding: '2rem',
+    },
     extend: {
       fontFamily: {
         bodyFont: ["Poppins", "sans-serif"],

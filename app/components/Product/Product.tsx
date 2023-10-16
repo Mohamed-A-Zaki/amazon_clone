@@ -3,22 +3,25 @@ import Image from "next/image";
 import { ProductType } from "@/app/types";
 import useProduct from "@/app/hooks/useProduct";
 import { AiOutlineShoppingCart, AiFillHeart } from "react-icons/ai";
+import Link from "next/link";
 
 export default function Product(product: ProductType) {
-  const { title, description, oldPrice, price, image, category } = product;
+  const {_id, title, description, oldPrice, price, image, category } = product;
   const { handle_Add_to_cart, handle_Add_to_favorite } = useProduct(product);
 
   return (
     <>
       <div className="px-3 py-5 bg-white rounded-lg group">
         <div className="relative h-[250px] flex items-center justify-center overflow-hidden">
-          <Image
-            src={image}
-            alt={"img"}
-            width={300}
-            height={250}
-            className="m-auto object-cover h-[250px]"
-          />
+          <Link href={`/${_id}`}>
+            <Image
+              src={image}
+              alt={"img"}
+              width={300}
+              height={250}
+              className="m-auto object-cover h-[250px]"
+            />
+          </Link>
           <div className="absolute top-0 right-0 animate-bounce text-xs font-medium">
             !save {(oldPrice - price).toFixed(2)}
           </div>
